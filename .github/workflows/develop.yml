@@ -6,6 +6,19 @@ on:
       - 'main'
       
 jobs:
+#   test를 위한 job
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup nodejs 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+          cache: 'yarn'
+      - run: yarn test
+
+# 빌드를 위한 Job
   build:
     runs-on: ubuntu-latest
     steps:
