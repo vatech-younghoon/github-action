@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 14.x
           cache: 'yarn'
-      - run: yarn test
+      - run: npm test
 
 # 빌드를 위한 Job
   build:
