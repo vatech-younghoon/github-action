@@ -58,6 +58,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.PEM_KEY }}
           script: |
+            sudo docker stop dev-server
+            sudo docker rm dev-server
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/citest:main
-            docker run -t ${{ secrets.DOCKERHUB_USERNAME }}/citest:main
+            docker run --name dev-server -t ${{ secrets.DOCKERHUB_USERNAME }}/citest:main
